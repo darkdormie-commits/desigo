@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --ink: #18211d; --cream: #f6f5f0; --muted: #6e7771; --line: #e3e5df; --green: #0d6b4d; --lime: #d8ee61; --orange: #ef774e; --navy: #102e48; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--cream); color: var(--ink); }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #d8ee61; color: #102e48; }
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .glass { background: rgba(255,255,255,.76); border: 1px solid rgba(255,255,255,.72); box-shadow: 0 18px 50px rgba(37,56,44,.10); backdrop-filter: blur(18px); }
+  .glass-dark { background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.2); box-shadow: 0 18px 50px rgba(0,0,0,.22); backdrop-filter: blur(18px); }
+  .hide-scrollbar { scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+}
+
+/* Subtle Indian-inspired mandala/paisley texture — decorative only, kept faint so it never fights the UI */
+.mandala-bg {
+  background-image: radial-gradient(circle at center, transparent 0 22%, rgba(233,120,78,.10) 22.5% 23%, transparent 23.5% 30%, rgba(13,107,77,.09) 30.5% 31%, transparent 31.5%);
+  background-size: 120px 120px;
+}
+.tricolor-bar { background: linear-gradient(90deg, #f2994a 0%, #f2994a 32%, #f4f4f0 32%, #f4f4f0 66%, #0d6b4d 66%, #0d6b4d 100%); }
+
+@keyframes drift { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(12px,-18px,0) rotate(4deg); } }
+@keyframes pulse-ring { 0% { transform: scale(.8); opacity: .7; } 70%,100% { transform: scale(1.25); opacity: 0; } }
+.drift { animation: drift 9s ease-in-out infinite; }
+.pulse-ring { animation: pulse-ring 2.7s ease-out infinite; }
+
+.map-grid { background-color: #dce7df; background-image: linear-gradient(rgba(255,255,255,.56) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.56) 1px, transparent 1px), radial-gradient(circle at 24% 26%, rgba(255,255,255,.9), transparent 20%), radial-gradient(circle at 78% 66%, rgba(184,209,190,.72), transparent 25%); background-size: 46px 46px, 46px 46px, auto, auto; }
+.map-road { position: absolute; height: 11px; background: rgba(255,255,255,.76); border-radius: 999px; transform-origin: left; box-shadow: 0 2px 4px rgba(57,90,70,.07); }
+.map-road.one { width: 74%; left: 8%; top: 32%; transform: rotate(18deg); }
+.map-road.two { width: 62%; left: 23%; top: 63%; transform: rotate(-28deg); }
+.map-road.three { width: 64%; left: 19%; top: 48%; transform: rotate(73deg); }
+.map-road.four { width: 38%; left: 48%; top: 22%; transform: rotate(58deg); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
